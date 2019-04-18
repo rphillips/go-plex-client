@@ -733,8 +733,6 @@ func (p *Plex) GetServers() ([]PMSDevices, error) {
 	result := new(resourcesResponse)
 
 	if err := xml.NewDecoder(resp.Body).Decode(result); err != nil {
-		fmt.Println(err.Error())
-
 		return []PMSDevices{}, err
 	}
 
@@ -766,8 +764,6 @@ func (p *Plex) GetServersInfo() (ServerInfo, error) {
 	result := ServerInfo{}
 
 	if err := xml.NewDecoder(resp.Body).Decode(&result); err != nil {
-		fmt.Println(err.Error())
-
 		return ServerInfo{}, err
 	}
 
@@ -789,8 +785,6 @@ func (p *Plex) GetMachineID() (string, error) {
 	var result BaseAPIResponse
 
 	if err = json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		fmt.Println(err.Error())
-
 		return "", err
 	}
 
@@ -817,8 +811,6 @@ func (p *Plex) GetSections(machineID string) ([]ServerSections, error) {
 	var result SectionIDResponse
 
 	if err := xml.NewDecoder(resp.Body).Decode(&result); err != nil {
-		fmt.Println(err.Error())
-
 		return []ServerSections{}, err
 	}
 
@@ -855,8 +847,6 @@ func (p *Plex) GetLibraries() (LibrarySections, error) {
 	var result LibrarySections
 
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		fmt.Println(err.Error())
-
 		return LibrarySections{}, err
 	}
 
@@ -1002,8 +992,6 @@ func (p *Plex) GetLibraryLabels(sectionKey, sectionIndex string) (LibraryLabels,
 	var result LibraryLabels
 
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		fmt.Println(err.Error())
-
 		return LibraryLabels{}, err
 	}
 

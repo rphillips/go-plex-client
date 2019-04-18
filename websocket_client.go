@@ -205,7 +205,7 @@ func (p *Plex) SubscribeToNotifications(events *NotificationEvents, interrupt <-
 			_, message, err := c.ReadMessage()
 
 			if err != nil {
-				fmt.Println("read:", err)
+				//fmt.Println("read:", err)
 				fn(err)
 				return
 			}
@@ -244,13 +244,13 @@ func (p *Plex) SubscribeToNotifications(events *NotificationEvents, interrupt <-
 					fn(err)
 				}
 			case <-interrupt:
-				fmt.Println("interrupt")
+				//fmt.Println("interrupt")
 				// To cleanly close a connection, a client should send a close
 				// frame and wait for the server to close the connection.
 				err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
 
 				if err != nil {
-					fmt.Println("write close:", err)
+					//fmt.Println("write close:", err)
 					fn(err)
 				}
 
@@ -258,7 +258,7 @@ func (p *Plex) SubscribeToNotifications(events *NotificationEvents, interrupt <-
 				case <-done:
 				case <-time.After(time.Second):
 				}
-				fmt.Println("closing websocket...")
+				//fmt.Println("closing websocket...")
 				c.Close()
 				break
 			}
